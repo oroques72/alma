@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:annotation>
+    <xs:documentation>
+			MARCXML: The MARC 21 XML Schema
+			Prepared by Corey Keith
+			
+				May 21, 2002 - Version 1.0  - Initial Release
+
+**********************************************
+Changes.
+
+August 4, 2003 - Version 1.1 - 
+Removed import of xml namespace and the use of xml:space="preserve" attributes on the leader and controlfields. 
+                    Whitespace preservation in these subfields is accomplished by the use of xs:whiteSpace value="preserve"
+
+May 21, 2009  - Version 1.2 - 
+in subfieldcodeDataType  the pattern 
+                          "[\da-z!&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?{}_^`~\[\]\\]{1}"
+	changed to:	
+                         "[\dA-Za-z!&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?{}_^`~\[\]\\]{1}"
+    i.e "A-Z" added after "[\d" before "a-z"  to allow upper case.  This change is for consistency with the documentation.
+	
+************************************************************
+			This schema supports XML markup of MARC21 records as specified in the MARC documentation (see www.loc.gov).  It allows tags with
+			alphabetics and subfield codes that are symbols, neither of which are as yet used in  the MARC 21 communications formats, but are 
+			allowed by MARC 21 for local data.  The schema accommodates all types of MARC 21 records: bibliographic, holdings, bibliographic 
+			with embedded holdings, authority, classification, and community information.
+		</xs:documentation>
+  </xs:annotation>
+  <xs:element name="record" type="recordType" nillable="true" id="record.e">
+    
+        <xs:annotation>
+      <xs:documentation>record is a top level container element for all of the field elements which compose the record</xs:documentation>
+    </xs:annotation>
+    </xs:element>
+  <xs:element name="collection" type="collectionType" nillable="true" id="collection.e">
+    
+        <xs:annotation>
+      <xs:documentation>collection is a top level container element for 0 or many records</xs:documentation>
+    </xs:annotation>
+    </xs:element>
+  <xs:complexType name="collectionType" id="collection.ct">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="record"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="idDataType" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="recordType" id="record.ct">
+    <xs:sequence minOccurs="0">
+      <xs:element name="leader" type="leaderFieldType"/>
+      <xs:element name="controlfield" type="controlFieldType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="datafield" type="dataFieldType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="type" type="recordTypeType" use="optional"/>
+    <xs:attribute name="id" type="idDataType" use="optional"/>
+  </xs:complexType>
+  <xs:simpleType name="recordTypeType" id="type.st">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Bibliographic"/>
+      <xs:enumeration value="Authority"/>
+      <xs:enumeration value="Holdings"/>
+      <xs:enumeration value="Classification"/>
+      <xs:enumeration value="Community"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="leaderFieldType" id="leader.ct">
+    <xs:annotation>
+      <xs:documentation>MARC21 Leader, 24 bytes</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="leaderDataType">
+        <xs:attribute name="id" type="idDataType" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="leaderDataType" id="leader.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="[\d ]{5}[\dA-Za-z ]{1}[\dA-Za-z]{1}[\dA-Za-z ]{3}(2| )(2| )[\d ]{5}[\dA-Za-z ]{3}(4500|    )"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="controlFieldType" id="controlfield.ct">
+    <xs:annotation>
+      <xs:documentation>MARC21 Fields 001-009</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="controlDataType">
+        <xs:attribute name="id" type="idDataType" use="optional"/>
+        <xs:attribute name="tag" type="controltagDataType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="controlDataType" id="controlfield.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="controltagDataType" id="controltag.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="00[1-9A-Za-z]{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="dataFieldType" id="datafield.ct">
+    <xs:annotation>
+      <xs:documentation>MARC21 Variable Data Fields 010-999</xs:documentation>
+    </xs:annotation>
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="subfield" type="subfieldatafieldType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="idDataType" use="optional"/>
+    <xs:attribute name="tag" type="tagDataType" use="required"/>
+    <xs:attribute name="ind1" type="indicatorDataType" use="required"/>
+    <xs:attribute name="ind2" type="indicatorDataType" use="required"/>
+  </xs:complexType>
+  <xs:simpleType name="tagDataType" id="tag.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="(0([1-9A-Z][0-9A-Z])|0([1-9a-z][0-9a-z]))|(([1-9A-Z][0-9A-Z]{2})|([1-9a-z][0-9a-z]{2}))"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="indicatorDataType" id="ind.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="[\da-z ]{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="subfieldatafieldType" id="subfield.ct">
+    <xs:simpleContent>
+      <xs:extension base="subfieldDataType">
+        <xs:attribute name="id" type="idDataType" use="optional"/>
+        <xs:attribute name="code" type="subfieldcodeDataType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="subfieldDataType" id="subfield.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="subfieldcodeDataType" id="code.st">
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:pattern value="[\dA-Za-z!&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?{}_^`~\[\]\\]{1}"/>
+      <!-- "A-Z" added after "\d" May 21, 2009 -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="idDataType" id="id.st">
+    <xs:restriction base="xs:ID"/>
+  </xs:simpleType>
+</xs:schema>
