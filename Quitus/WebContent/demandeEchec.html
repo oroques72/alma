@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Demande de quitus</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/layout.css" />
+<link rel="stylesheet" type="text/css" media="print"
+	href="css/layout-print.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-datepicker.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-select.min.css" />
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="conf/config.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function getParameterByName(p) {
+			var str = document.location.href;
+			var url = new URL(str);
+			var name = url.searchParams.get(p);
+			return name;
+		}
+
+		function lien() {
+
+			window.location = "";
+		}
+
+		//alert(getParameterByName('email'));
+	</script>
+	<div>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+
+					<a class="navbar-brand" href="javascript: void(0);"
+						onclick="javascript: window.open(URL_LOGO, '', '');"><img
+						alt="UFTMip" src="conf/logo.png" /> </a> <span></span> <a
+						class="navbar-brand">Demande de quitus</a>
+				</div>
+
+			</div>
+		</nav>
+
+		<br>
+		<br>
+		<br>
+		<div class="container">
+
+			<div class="panel panel-danger">
+				<div class="panel-heading">Echec</div>
+				<div class="panel-body">
+					<p>
+						Votre demande de quitus n'a pu aboutir car vous avez des prêts en
+						cours. Veuillez rapporter vos documents. Vous pouvez également
+						contacter le service <a
+							href="javascript: window.open(URL_CONTACT, '', '');">une-question</a>.
+					</p>
+
+					<br> <br>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Demande de quitus</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no" />
+<link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+<script type="text/javascript" src="conf/config.js"></script>
+</head>
+<noscript>Désolé vous devez avoir JavaScript activé pour accéder à cette page</noscript>
+<script>
+var ua = navigator.userAgent;
+//alert(ua);
+//document.write(ua);
+var x = ua.indexOf("Trident");
+if (x > 0){
+	var url = 'https://'+location.hostname+'/'+WAR_NAME+'/quitus_erreur.html'; 
+	document.location = url;
+}
+else{
+	var url = 'https://'+location.hostname+'/'+WAR_NAME+'/quitusjs.html'; 
+	document.location = url;
+}
+
+</script>
+</html>
