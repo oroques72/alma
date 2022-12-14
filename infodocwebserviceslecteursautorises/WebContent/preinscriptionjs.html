@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr">
+<noscript>Désolé vous devez avoir JavaScript activé pour
+	accéder à cette page</noscript>
+
+<head>
+<title>Demande d'inscription - Inscription</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no" />
+<link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/layout.css" />
+<link rel="stylesheet" type="text/css" media="print"
+	href="css/layout-print.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-select.min.css" />
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="create.js"></script>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bootstrap-select.min.js"></script>
+
+<script type="text/javascript" src="bootbox.all.min.js"></script>
+
+<script type="text/javascript" src="conf/config.js"></script>
+<script type="text/javascript" src="preinscription.js"></script>
+
+<script
+	src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<script>
+var ua = navigator.userAgent;
+//alert(ua);
+//document.write(ua);
+var x = ua.indexOf("Trident");
+if (x > 0){
+	var url = 'https://'+location.hostname+'/'+WAR_NAME+'/preinscription_erreur.html'; 
+	document.location = url;
+}
+else{
+	//alert(ua);
+}
+
+</script>
+
+
+<body onload="javascript: init(); focusElement('lastName');">
+	
+	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				
+				<a class="navbar-brand"
+					href="javascript: void(0);"  onclick="javascript: window.open(URL_LOGO, '', '');"> <img
+					alt="UFTMip" src="conf/logo.png" />
+				</a> <span></span>
+				<nav class="navbar-brand">Demande d'inscription</nav>
+
+
+			</div>
+		</div>
+	</nav>
+ 
+ 	<br>
+	<br>
+	<div class="panel panel-default"></div>
+	<div class="panel-heading" id="ID_PANEL_HEADING">
+		<!--  voir config.js   -->
+	</div>
+	<br>
+	<br>
+	<div class="alert alert-info alert-dismissible" id="ID_ALERT"></div>
+
+	<br>
+	<div class="container">
+		<form id="createForm" class="form-horizontal"
+			enctype="multipart/form-data">
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>1</strong> &ndash; Mon identité <span class="pull-right"><a
+						class="accordion-toggle" data-toggle="collapse" href="#indentity"></a></span>
+
+
+				</div>
+				<div id="indentity" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="lastName">Nom</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="lastName" name="lastName" value="" /> <span
+												id="aideLastName"></span>
+										</div>
+									</div>
+
+
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="firstName">Prénom</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="firstName" name="firstName" value="" /> <span
+												id="aideFirstName"></span>
+
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="birthDate">Date
+											de naissance</label>
+										<div class="col-md-4">
+											<input type="text" class="form-control" maxlength="10"
+												id="birthDate" name="birthDate" value=""
+												placeholder="JJ/MM/AAAA" /> <span id="aideBirthdate"></span>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>2</strong> &ndash; Mon mot de passe<span class="pull-right"><a
+						class="accordion-toggle" data-toggle="collapse" href="#mypasswd"></a></span>
+				</div>
+				<div id="mypasswd" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="passwd">Mot
+											de passe <a data-toggle="tooltip"
+											title="doit contenir au moins 8 caractères non accentués dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial \-,;:.!?#$*@ (Les caractères : < >  ne sont pas autorisés.)"><sup>?</sup></a>
+										</label>
+										<div class="col-md-8">
+											<input type="password" class="form-control" maxlength="20"
+												id="passwd" name="passwd" value="" /> <span
+												id="aidePassword"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="passwd2">Confirmation</label>
+										<div class="col-md-8">
+											<input type="password" class="form-control" maxlength="20"
+												id="passwd2" name="passwd2" value="" /> <span
+												id="aidePassword2"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>3</strong> &ndash; Mes informations de contact<span
+						class="pull-right"><a class="accordion-toggle"
+						data-toggle="collapse" href="#contact"></a></span>
+				</div>
+				<div id="contact" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="email">E-mail</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="70"
+												id="email" name="email" value="" /> <span id="aideEmail"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="email2">Confirmation</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="70"
+												id="email2" name="email2" value=""
+												placeholder="Entrez une deuxième fois votre e-mail" /> <span
+												id="aideEmail2"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="mobile">
+											Téléphone portable</label>
+										<div class="col-md-4">
+											<input type="text" class="form-control" maxlength="14"
+												id="mobile" name="mobile" value="" /> <span id="aideMobile"></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<div class="col-md-4"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr class="separator hidden-xs hidden-sm top" />
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="address1">Adresse</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="address1" name="address1" value="" /> <span
+												id="aideAddress1"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="address2"></label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="address2" name="address2" value="" /> <span
+												id="aideAddress2"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="address3"></label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="address3" name="address3" value="" /> <span
+												id="aideAddress3"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="address4"></label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="address4" name="address4" value="" /> <span
+												id="aideAddress4"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="address5"></label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="address5" name="address5" value="" /> <span
+												id="aideAddress5"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required"
+											for="postalCode">Code postal</label>
+										<div class="col-md-4">
+											<input type="text" class="form-control" maxlength="5"
+												id="postalCode" name="postalCode" value="" /> <span
+												id="aidePostalCode"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="city">Ville</label>
+										<div class="col-md-6">
+											<input type="text" class="form-control" maxlength="20"
+												id="city" name="city" value="" /> <span id="aideCity"></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="country">Pays</label>
+										<div class="col-md-6">
+											<select class="form-control selectpicker" id="country"
+												name="country" title="&nbsp;">
+												<option value="AFG">Afghanistan</option>
+												<option value="ALA">Aland Islands</option>
+												<option value="ALB">Albania</option>
+												<option value="DZA">Algeria</option>
+												<option value="ASM">American Samoa</option>
+												<option value="AND">Andorra</option>
+												<option value="AGO">Angola</option>
+												<option value="AIA">Anguilla</option>
+												<option value="ATA">Antarctica</option>
+												<option value="ATG">Antigua and Barbuda</option>
+												<option value="ARG">Argentina</option>
+												<option value="ARM">Armenia</option>
+												<option value="ABW">Aruba</option>
+												<option value="AUS">Australia</option>
+												<option value="AUT">Austria</option>
+												<option value="AZE">Azerbaijan</option>
+												<option value="BHS">Bahamas</option>
+												<option value="BHR">Bahrain</option>
+												<option value="BGD">Bangladesh</option>
+												<option value="BRB">Barbados</option>
+												<option value="BLR">Belarus</option>
+												<option value="BEL">Belgium</option>
+												<option value="BLZ">Belize</option>
+												<option value="BEN">Benin</option>
+												<option value="BMU">Bermuda</option>
+												<option value="BTN">Bhutan</option>
+												<option value="BOL">Bolivia</option>
+												<option value="BIH">Bosnia and Herzegovina</option>
+												<option value="BWA">Botswana</option>
+												<option value="BRA">Brazil</option>
+												<option value="BRN">Brunei Darussalam</option>
+												<option value="BGR">Bulgaria</option>
+												<option value="BFA">Burkina Faso</option>
+												<option value="BDI">Burundi</option>
+												<option value="KHM">Cambodia</option>
+												<option value="CMR">Cameroon</option>
+												<option value="CAN">Canada</option>
+												<option value="CPV">Cape Verde</option>
+												<option value="CYM">Cayman Islands</option>
+												<option value="CAF">Central African Republic</option>
+												<option value="TCD">Chad</option>
+												<option value="CHL">Chile</option>
+												<option value="CHN">China</option>
+												<option value="COL">Colombia</option>
+												<option value="COM">Comoros</option>
+												<option value="COG">Congo</option>
+												<option value="COD">Congo, the Democratic Republic
+													of the</option>
+												<option value="COK">Cook Islands</option>
+												<option value="CRI">Costa Rica</option>
+												<option value="HRV">Croatia</option>
+												<option value="CUB">Cuba</option>
+												<option value="CUW">Curacao</option>
+												<option value="CYP">Cyprus</option>
+												<option value="CZE">Czech Republic</option>
+												<option value="DNK">Denmark</option>
+												<option value="DJI">Djibouti</option>
+												<option value="DMA">Dominica</option>
+												<option value="DOM">Dominican Republic</option>
+												<option value="ECU">Ecuador</option>
+												<option value="EGY">Egypt</option>
+												<option value="SLV">El Salvador</option>
+												<option value="GNQ">Equatorial Guinea</option>
+												<option value="ERI">Eritrea</option>
+												<option value="EST">Estonia</option>
+												<option value="ETH">Ethiopia</option>
+												<option value="FLK">Falkland Islands (Malvinas)</option>
+												<option value="FJI">Fiji</option>
+												<option value="FIN">Finland</option>
+												<option value="FRA" selected="selected">France</option>
+												<option value="GUF">French Guiana</option>
+												<option value="PYF">French Polynesia</option>
+												<option value="GAB">Gabon</option>
+												<option value="GMB">Gambia</option>
+												<option value="GEO">Georgia</option>
+												<option value="DEU">Germany</option>
+												<option value="GHA">Ghana</option>
+												<option value="GIB">Gibraltar</option>
+												<option value="GRC">Greece</option>
+												<option value="GRL">Greenland</option>
+												<option value="GRD">Grenada</option>
+												<option value="GLP">Guadeloupe</option>
+												<option value="GUM">Guam</option>
+												<option value="GTM">Guatemala</option>
+												<option value="GGY">Guernsey</option>
+												<option value="GIN">Guinea</option>
+												<option value="GNB">Guinea-Bissau</option>
+												<option value="GUY">Guyana</option>
+												<option value="HTI">Haiti</option>
+												<option value="HND">Honduras</option>
+												<option value="HKG">Hong Kong</option>
+												<option value="HUN">Hungary</option>
+												<option value="ISL">Iceland</option>
+												<option value="IND">India</option>
+												<option value="IDN">Indonesia</option>
+												<option value="IRN">Iran</option>
+												<option value="IRQ">Iraq</option>
+												<option value="IRL">Ireland</option>
+												<option value="ISR">Israel</option>
+												<option value="ITA">Italy</option>
+												<option value="CIV">Ivory Coast</option>
+												<option value="JAM">Jamaica</option>
+												<option value="JPN">Japan</option>
+												<option value="JOR">Jordan</option>
+												<option value="KAZ">Kazakhstan</option>
+												<option value="KEN">Kenya</option>
+												<option value="KIR">Kiribati</option>
+												<option value="KWT">Kuwait</option>
+												<option value="KGZ">Kyrgyzstan</option>
+												<option value="LAO">Lao People's Democratic
+													Republic</option>
+												<option value="LVA">Latvia</option>
+												<option value="LBN">Lebanon</option>
+												<option value="LSO">Lesotho</option>
+												<option value="LBR">Liberia</option>
+												<option value="LBY">Libya</option>
+												<option value="LIE">Liechtenstein</option>
+												<option value="LTU">Lithuania</option>
+												<option value="LUX">Luxembourg</option>
+												<option value="MAC">Macao</option>
+												<option value="MKD">Macedonia, the former Yugoslav
+													Republic of</option>
+												<option value="MDG">Madagascar</option>
+												<option value="MWI">Malawi</option>
+												<option value="MYS">Malaysia</option>
+												<option value="MDV">Maldives</option>
+												<option value="MLI">Mali</option>
+												<option value="MLT">Malta</option>
+												<option value="MHL">Marshall Islands</option>
+												<option value="MTQ">Martinique</option>
+												<option value="MRT">Mauritania</option>
+												<option value="MUS">Mauritius</option>
+												<option value="MEX">Mexico</option>
+												<option value="FSM">Micronesia, Federated States of</option>
+												<option value="MDA">Moldova, Republic of</option>
+												<option value="MCO">Monaco</option>
+												<option value="MNG">Mongolia</option>
+												<option value="MNE">Montenegro</option>
+												<option value="MSR">Montserrat</option>
+												<option value="MAR">Morocco</option>
+												<option value="MOZ">Mozambique</option>
+												<option value="MMR">Myanmar</option>
+												<option value="NAM">Namibia</option>
+												<option value="NRU">Nauru</option>
+												<option value="NPL">Nepal</option>
+												<option value="NLD">Netherlands</option>
+												<option value="NCL">New Caledonia</option>
+												<option value="NZL">New Zealand</option>
+												<option value="NIC">Nicaragua</option>
+												<option value="NER">Niger</option>
+												<option value="NGA">Nigeria</option>
+												<option value="NIU">Niue</option>
+												<option value="NFK">Norfolk Island</option>
+												<option value="PRK">North Korea, Democratic
+													People's Republic of</option>
+												<option value="NOR">Norway</option>
+												<option value="OMN">Oman</option>
+												<option value="PAK">Pakistan</option>
+												<option value="PLW">Palau</option>
+												<option value="PAN">Panama</option>
+												<option value="PNG">Papua New Guinea</option>
+												<option value="PRY">Paraguay</option>
+												<option value="PER">Peru</option>
+												<option value="PHL">Philippines</option>
+												<option value="PCN">Pitcairn</option>
+												<option value="POL">Poland</option>
+												<option value="PRT">Portugal</option>
+												<option value="PRI">Puerto Rico</option>
+												<option value="QAT">Qatar</option>
+												<option value="ROU">Romania</option>
+												<option value="RUS">Russian Federation</option>
+												<option value="RWA">Rwanda</option>
+												<option value="BLM">Saint Barthelemy</option>
+												<option value="VCT">Saint Vincent and the
+													Grenadines</option>
+												<option value="WSM">Samoa</option>
+												<option value="SMR">San Marino</option>
+												<option value="SAU">Saudi Arabia</option>
+												<option value="SEN">Senegal</option>
+												<option value="SRB">Serbia</option>
+												<option value="SYC">Seychelles</option>
+												<option value="SLE">Sierra Leone</option>
+												<option value="SGP">Singapore</option>
+												<option value="SVK">Slovakia</option>
+												<option value="SVN">Slovenia</option>
+												<option value="SLB">Solomon Islands</option>
+												<option value="SOM">Somalia</option>
+												<option value="ZAF">South Africa</option>
+												<option value="KOR">South Korea, Republic of</option>
+												<option value="ESP">Spain</option>
+												<option value="LKA">Sri Lanka</option>
+												<option value="SDN">Sudan</option>
+												<option value="SUR">Suriname</option>
+												<option value="SWZ">Swaziland</option>
+												<option value="SWE">Sweden</option>
+												<option value="CHE">Switzerland</option>
+												<option value="SYR">Syria</option>
+												<option value="TWN">Taiwan, Province of China</option>
+												<option value="TJK">Tajikistan</option>
+												<option value="TZA">Tanzania, United Republic of</option>
+												<option value="THA">Thailand</option>
+												<option value="TLS">Timor-Leste</option>
+												<option value="TGO">Togo</option>
+												<option value="TKL">Tokelau</option>
+												<option value="TON">Tonga</option>
+												<option value="TTO">Trinidad and Tobago</option>
+												<option value="TUN">Tunisia</option>
+												<option value="TUR">Turkey</option>
+												<option value="TKM">Turkmenistan</option>
+												<option value="TUV">Tuvalu</option>
+												<option value="UGA">Uganda</option>
+												<option value="UKR">Ukraine</option>
+												<option value="ARE">United Arab Emirates</option>
+												<option value="GBR">United Kingdom</option>
+												<option value="USA">United States</option>
+												<option value="URY">Uruguay</option>
+												<option value="UZB">Uzbekistan</option>
+												<option value="VUT">Vanuatu</option>
+												<option value="VAT">Vatican City State, Holy See</option>
+												<option value="VEN">Venezuela, Bolivarian Republic
+													of</option>
+												<option value="VNM">Viet Nam</option>
+												<option value="VGB">Virgin Islands, British</option>
+												<option value="VIR">Virgin Islands, U.S.</option>
+												<option value="WLF">Wallis and Futuna</option>
+												<option value="ESH">Western Sahara</option>
+												<option value="YEM">Yemen</option>
+												<option value="ZMB">Zambia</option>
+												<option value="ZWE">Zimbabwe</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>4</strong> &ndash; Mon affiliation<span class="pull-right"><a
+						class="accordion-toggle" data-toggle="collapse"
+						href="#registration"></a></span>
+				</div>
+				<div id="registration" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="">
+								<label class="control-label col-md-2 required" for="affiliation">Je
+									suis</label>
+								<div class="col-md-9">
+									<select class="form-control selectpicker" id="affiliation"
+										name="affiliation" title="&nbsp;">
+										<option value="" selected="selected">Selectionnez...</option>
+									</select>
+
+								</div>
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="">
+								<label class="control-label col-md-2 required" for="buinscr">Bibliothèque
+									d'inscription</label>
+								<div class="col-md-9">
+									<select class="form-control selectpicker" id="buinscr"
+										name="buinscr" title="&nbsp;"
+										onchange="javascript:handleSelect(this);">
+										<option value="" selected="selected">Choisissez votre
+											bibliothèque...</option>
+									</select>
+
+								</div>
+								<div class="col-md-2">
+									<span id="bulien"></span>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<div class="">
+								<label class="control-label col-md-2 required" for="duree">Durée
+									d'inscription souhaitée</label>
+								<div class="col-md-9">
+									<select class="form-control selectpicker" id="duree"
+										name="duree" title="&nbsp;">
+									<option value="" selected="selected">Selectionnez...</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="">
+					<div class="checkbox col-md-9">
+						<label><input type="checkbox" id="accept" name="accept"
+							value="true" />J'ai pris connaissance des <a
+							href="javascript: void(0);"
+							onclick="javascript: window.open(URL_MENTIONS_LEGALES, '', '');">mentions
+								légales</a> relatives à l'utilisation de mes données.</label>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div id="google-recaptcha"></div>
+	 		
+			
+
+			<br> <br> <span id="aideVerifChampObligatoires"></span> <br>
+			<div class="form-group">
+				<div class="col-md-6">
+					<button type="button" class="btn btn-primary" id="Envoyer"
+						onclick="javascript : ecrireFichierUserLa ();">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;Envoyer
+						la demande
+					</button>
+					<button type="button" class="btn btn-default"
+						onclick="javascript: var url = 'https://'+hostname+'/'+WAR_NAME+'/preinscription.html'; document.location = url;">Initialiser</button>
+
+				</div>
+
+
+			</div>
+
+		</form>
+
+	</div>
+
+
+</body>
+</html>

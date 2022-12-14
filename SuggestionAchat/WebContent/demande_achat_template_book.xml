@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<purchase_request>
+<format>P</format>
+<requested_type>BOOK</requested_type>
+<owning_library>_bu_</owning_library>
+<requester_note>_note_demandeur</requester_note>
+<resource_metadata>
+<citation_type>BOOK</citation_type>
+<title>_titre_</title>
+<author>_auteur_</author>
+<publisher>_editeur_</publisher>
+<isbn>_isbn_</isbn>
+<publication_year>_anneepub_</publication_year>
+<volume>_volume_</volume>
+</resource_metadata>
+<notes>
+    <note>
+      <content>_note_address</content>
+      <type>ADDRESS</type>
+    </note>
+</notes>
+</purchase_request>

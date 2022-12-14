@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <user>
+    <record_type desc="Public">PUBLIC</record_type>
+    <primary_id>_primary_id</primary_id>
+    <first_name>_first_name</first_name>
+    <last_name>_last_name</last_name>
+    <full_name>_first_name _last_name</full_name>
+    <user_title desc="">
+    </user_title>
+    <job_category desc="">
+    </job_category>
+    <job_description>
+    </job_description>
+    <user_group>online</user_group>
+    <campus_code>_campus</campus_code>
+    <cataloger_level desc="[00] Default Level">00</cataloger_level>
+    <preferred_language desc="French">fr</preferred_language>
+    <birth_date>_birth_date</birth_date>
+    <expiry_date>_expiry_date</expiry_date>
+    <purge_date>_purge_date</purge_date>
+    <account_type desc="Internal">INTERNAL</account_type>
+    <external_id>
+    </external_id>
+    <password>_pwd</password>
+    <force_password_change>
+    </force_password_change>
+    <status desc="Active">ACTIVE</status>
+    <status_date>2020-02-05Z</status_date>
+    <contact_info>
+      <addresses>
+        <address preferred="true" segment_type="Internal">
+          <line1>_line1</line1>
+          <line2>_line2</line2>
+          <line3>_line3</line3>
+          <line4>_line4</line4>
+          <line5>_line5</line5>
+          <city>_city</city>
+          <state_province>
+          </state_province>
+          <postal_code>_postal_code</postal_code>
+          <country>_country</country>
+          <address_note>
+          </address_note>
+          <address_types>
+            <address_type desc="Home">home</address_type>
+          </address_types>
+        </address>
+      </addresses>
+      <emails>
+        <email preferred="true" segment_type="Internal">
+          <email_address>_email_address</email_address>
+          <email_types>
+            <email_type desc="School">school</email_type>
+          </email_types>
+        </email>
+      </emails>
+      <phones>
+        <phone preferred="true" preferred_sms="false" segment_type="Internal">
+          <phone_number>_mobile_phone_number</phone_number>
+          <phone_types>
+            <phone_type desc="Mobile">mobile</phone_type>
+          </phone_types>
+        </phone>
+      </phones>
+    </contact_info>
+    <is_researcher>false</is_researcher>
+    <user_identifiers/>
+<user_statistics>
+<user_statistic_1>
+<statistic_category_1>_niveau</statistic_category_1>
+</user_statistic_1>
+<user_statistic>
+<statistic_category>_categorie</statistic_category>
+</user_statistic>
+</user_statistics>
+    <user_roles>
+      <user_role>
+        <status desc="Active">ACTIVE</status>
+        <scope desc="Réseau des bibliothèques de l'Université de Toulouse">33TOULOUSE_INST</scope>
+        <role_type desc="Patron">200</role_type>
+        <parameters/>
+      </user_role>
+    </user_roles>
+    <user_blocks/>
+    <user_notes><user_note segment_type="Internal"><note_type desc="Code-barres">BARCODE</note_type>
+	<note_text>_note_ins</note_text><user_viewable>false</user_viewable><popup_note>true</popup_note></user_note></user_notes>
+    <proxy_for_users/>
+  </user>

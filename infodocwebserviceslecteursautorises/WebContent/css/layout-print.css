@@ -1,0 +1,10 @@
+a[href]:after {content: none;}
+
+
+/* create */
+
+.nav + .form-group {margin-top: 15px;}
+
+.form-group div + div {margin-top: 15px;}
+
+.borderless tbody tr td {border-top: none;}

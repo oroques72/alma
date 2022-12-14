@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Demande d'inscription - Succès</title>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/layout.css" />
+<link rel="stylesheet" type="text/css" media="print"
+	href="css/layout-print.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-select.min.css" />
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="conf/config.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function getParameterByName(p) {
+			var str = document.location.href;
+			var url = new URL(str);
+			var name = url.searchParams.get(p);
+			return name;
+		}
+
+		//alert(getParameterByName('email'));
+	</script>
+	<div>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+
+					<a class="navbar-brand" href="javascript: void(0);"
+						onclick="javascript: window.open(URL_LOGO, '', '');"><img
+						alt="UFTMip" src="conf/logo.png" /> </a> <span></span> <a
+						class="navbar-brand">Demande d'inscription</a>
+				</div>
+
+			</div>
+		</nav>
+
+		<br>
+		<br>
+		<br>
+		<div class="container">
+
+			<div class="panel panel-success">
+				<div class="panel-heading">Succès</div>
+				<div class="panel-body">
+					<p>Votre demande d'inscription a bien été enregistrée.</p>
+					<p>Que faire ensuite ?</p>
+
+
+
+					<ul>
+						<li>Veuillez noter votre identifiant provisoire : <strong><script
+									type="text/javascript">
+							document.write(getParameterByName('id'));
+						</script></strong>.Il vous permet dès
+							maintenant de vous connecter à votre compte lecteur avec le mot
+							de passe que vous avez renseigné, et cela jusqu'à la finalisation
+							de votre inscription.
+						</li>
+						<li>Présentez-vous à l'accueil d'une bibliothèque du réseau (<a
+							href="javascript: void(0);"
+							onclick="javascript: window.open(URL_LOGO, '', '');"><script
+									type="text/javascript">
+								document.write(URL_LOGO)
+							</script></a>) pour
+							finaliser votre inscription, procéder au paiement éventuel et
+							retirer votre carte de lecteur.
+						</li>
+						<li>Munissez-vous des documents demandés par la bibliothèque
+							d'inscription.</li>
+						<li>Si vous êtes éligible à une inscription gratuite
+							(demandeur d'emploi, bénéficiaire du RSA, service civique, etc.),
+							munissez vous de tout document permettant de la justifier.</li>
+					</ul>
+					<p>Veuillez noter que votre inscription ne vous permettra pas
+						d'accéder à distance aux ressources électroniques souscrites par
+						la bibliothèque. Seule la consultation sur place est possible.</p>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12"></div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

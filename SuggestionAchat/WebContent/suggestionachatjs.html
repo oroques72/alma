@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<noscript>Désolé vous devez avoir JavaScript activé pour
+	accéder à cette page</noscript>
+
+<head>
+<title>Suggestion d'achat</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no" />
+<link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/layout.css" />
+<link rel="stylesheet" type="text/css" media="print"
+	href="css/layout-print.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-select.min.css" />
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="create.js"></script>
+
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bootstrap-filestyle.min.js"></script>
+
+<script type="text/javascript" src="bootbox.all.min.js"></script>
+<script type="text/javascript" src="bootstrap-select.min.js"></script>
+<script type="text/javascript" src="conf/config.js"></script>
+
+<script type="text/javascript" src="suggestionachat.js"></script>
+<script
+	src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+	box-sizing: border-box;
+}
+
+</style>
+</head>
+
+<script>
+var ua = navigator.userAgent;
+//alert(ua);
+//document.write(ua);
+var x = ua.indexOf("Trident");
+if (x > 0){
+	var url = 'https://'+location.hostname+'/sga/suggestionachat_erreur.html'; 
+	document.location = url;
+}
+else{
+	//alert(ua);
+}
+</script>
+
+<body onload="javascript: init(); focusElement('lastName');">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand"
+					href="javascript: void(0);"  onclick="javascript: window.open(URL_LOGO, '', '');"> <img
+					alt="UFTMip" src="conf/logo.png" />
+				</a> <span></span>
+				<nav class="navbar-brand">Suggestion d'achat</nav>
+
+
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	
+	
+
+	<br>
+	<br>
+	<br>
+	<div class="container">
+
+		<form id="createForm" class="form-horizontal">
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>1</strong> &ndash; Ma suggestion d'achat<span
+						class="pull-right"><a class="accordion-toggle"
+						data-toggle="collapse" href="#achat"></a></span>
+
+
+				</div>
+				<div id="achat" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="titre">Titre</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="100"
+												id="titre" name="titre" title="&nbsp;" /><span
+												id="aideTitre"></span>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="auteur">Auteur</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="80"
+												id="auteur" name="auteur" title="&nbsp;" /><span
+												id="aideAuteur"></span>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="anneepub">Année
+											de publication</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="anneepub"
+												name="anneepub" title="&nbsp;" maxlength="4" /><span
+												id="aideAnneePub"></span>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="editeur">Editeur</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="editeur" name="editeur" title="&nbsp;" /><span
+												id="aideEditeur"></span>
+
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="isbn">ISBN</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="isbn" name="isbn"
+												oninput="verifISBN();" title="&nbsp;" maxlength="17" /><span
+												id="aideIsbn"></span><small class="text-info"
+												id="noticetrouve"> </small>
+
+										</div>
+
+
+									</div>
+
+								</div>
+
+
+								<br> <br>
+
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="buinscr">Bibliothèque</label>
+										<div class="col-md-8">
+												<select class="form-control" id="buinscr"
+												name="buinscr"">
+												</select>
+									
+
+										</div>
+
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4" for="remarque">Remarque</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control"  maxlength="150"
+												id="remarque" name="remarque" title="&nbsp;"/><span
+												id="aideRemarque"></span>
+
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+
+
+
+					</div>
+
+				</div>
+				<br> <br>
+
+			</div>
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>2</strong> &ndash; Mon identité <span class="pull-right"><a
+						class="accordion-toggle" data-toggle="collapse" href="#indentity"></a></span>
+
+
+				</div>
+				<div id="indentity" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+
+
+
+								<div class="form-group">
+									<div class="">
+
+
+										<div class="checkbox col-md-4">
+											<label><input type="checkbox" id="carte" name="carte"
+												onclick="carteselect();" /><a href="javascript: void(0);"
+												onclick="javascript: window.open('https://'+hostname+'/'+WAR_NAME+'/aide_carte.pdf', '', '');">Numéro
+													de carte<sup>?</sup> :</a></label>
+
+										</div>
+
+										<div class="col-md-6">
+
+											<input type="text" class="form-control"
+												placeholder="Recherchez.." name="unr" id="unr"
+												maxlength="13" oninput="maj();"> <small
+												class="text-info" id="aide_unr"> Insérez votre numéro de carte
+												pour retrouver vos coordonnées OU décochez la case pour les
+												insérer manuellement. </small>
+
+
+
+										</div>
+										<button type="button" id="button_search"
+											onclick="rechercherUNR();">
+
+											<i class="fa fa-search fa-2x" style="color: blue"></i>
+										</button>
+
+
+
+
+
+									</div>
+
+
+								</div>
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="lastName">Nom</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="lastName" name="lastName" value="" /> <span
+												id="aideLastName"></span>
+										</div>
+									</div>
+
+
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="firstName">Prénom</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="firstName" name="firstName" value="" /> <span
+												id="aideFirstName"></span>
+
+
+										</div>
+
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="email">E-mail</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="email" name="email" value="" /> <span id="aideEmail"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="">
+										<label class="control-label col-md-4 required" for="email2">Confirmation</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" maxlength="40"
+												id="email2" name="email2" value=""
+												placeholder="Entrez une deuxième fois votre e-mail" /> <span
+												id="aideEmail2"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="google-recaptcha"></div>
+
+			<br> <br> <span id="aideVerifChampObligatoires"></span> <br>
+			<div class="form-group">
+				<div class="col-md-6">
+					<button type="button" class="btn btn-primary" id="Envoyer"
+						onclick="envoyer();">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;Envoyer
+						la demande
+					</button>
+					<button type="button" class="btn btn-default" id="Initialiser"
+						onclick="javascript: var url = 'https://'+hostname+'/'+WAR_NAME+'/suggestionachat.html?view='+etab; document.location = url;">Initialiser</button>
+
+				</div>
+
+
+			</div>
+
+		</form>
+	</div>
+
+</body>
+</html>

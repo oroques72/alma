@@ -1,0 +1,116 @@
+body {padding-top: 91px;}
+
+.navbar-brand > img {margin-top: -15px;}
+
+.navbar-brand + span {float: left; height: 30px; margin: 10px 20px 0 -5px; border-left: 1px solid #ccc;}
+
+.btn-primary, .btn-primary:focus, .btn-primary:link, .btn-primary:visited  {
+  color: white;
+  background-color: #5fa4b0;
+  border-color: #5fa4b0;
+}
+
+.btn-primary:hover, .btn-primary:active {background-color: #00707f; border-color: #00707f;}
+
+.form-control:focus {
+  border-color: #00707f;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 112, 127, 0.6);
+}
+
+.panel-heading .accordion-toggle:after {
+  font-family: 'Glyphicons Halflings';
+  content: "\e114";
+  float: right;
+  color: grey;
+}
+
+.panel-heading .accordion-toggle.collapsed:after {content: "\e080";}
+
+.contact {text-align: right; color: grey;}
+
+.nowrap {white-space: nowrap;}
+
+a {color: #00707f;}
+a:hover {color: #00707f;}
+
+.fit {width: 0.1px;}
+
+
+/* create */
+
+.alert + .panel {margin-top: 40px;}
+
+.panel + .panel {margin-top: 40px;}
+
+.nav + .form-group {margin-top: 15px;}
+
+.panel + .form-group {margin-top: 40px;}
+
+.fieldRow {margin-top: 1em;}
+
+.field {text-align: right;}
+
+.form-group .control-label.required:after, span.required:after {content: "\00a0*"; color: red;}
+
+.tooltip * {text-align: left;}
+
+.spinner {background: url(/inscription/page/image/spinner.gif) no-repeat right 5px center;}
+
+.borderless {margin-top: 3px;}
+
+.borderless tbody tr td {border-top: none;}
+
+.filter-option {font-weight: 700; color: #555;}
+
+input.form-control, textarea.form-control {font-weight: 700; color: #555;}
+
+label {font-weight: normal;}
+
+li.dropdown-header {font-size: 1em; font-weight: 700; color: #555;}
+
+span.noError {color: #46a744;}
+span.error {color: #a74644;}
+
+#important {display: none;}
+
+#statusWarning {margin-bottom: 10px;}
+
+#pictureEdit, #pictureResult {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 282px;
+  height: 357px;
+}
+
+#pictureEdit, #pictureEditTip {margin-left: -15px;}
+
+#pictureContainer {
+  width: 100%;
+  height: 100%;
+}
+
+#pictureContainer img, #pictureResult img {
+  width: 100%;
+}
+
+#cropTip {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pictureButton {
+  color: grey;
+}
+
+.icon-flipped {
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+/* @media (max-width: 991px) {
+  .form-group div + div {margin-top: 15px;}
+} */

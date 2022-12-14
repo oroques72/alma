@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Suggestion d'achat - Succès</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/layout.css" />
+<link rel="stylesheet" type="text/css" media="print" href="css/layout-print.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="conf/config.js"></script>
+</head>
+<body >
+
+<script type="text/javascript">
+
+
+function getParameterByName(p)
+{
+	var str = document.location.href;
+	var url = new URL(str);
+	var name = url.searchParams.get(p);
+	return name;
+}
+
+function lien(){
+	
+	window.location='https://'+location.hostname+'/'+WAR_NAME+'/suggestionachat.html?view='+getParameterByName('view');
+}
+	
+	//alert(getParameterByName('email'));
+</script>
+<div>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+
+<a class="navbar-brand"
+						href="javascript: void(0);"  onclick="javascript: window.open(URL_LOGO, '', '');"> <img
+						alt="UFTMip" src="conf/logo.png" />
+					</a> <span></span> <a class="navbar-brand">Suggestion d'achat</a>
+</div>
+
+</div>
+</nav>
+
+<br><br><br>
+<div class="container">
+
+<div class="panel panel-success">
+<div class="panel-heading">Succès</div>
+<div class="panel-body">
+<p>Votre suggestion d'achat a bien été transmise à la bibliothèque <strong><script type="text/javascript">
+            document.write(getParameterByName('bu'));</script></strong>.</p>
+
+<br>
+<p>Résumé de votre demande:</p>
+<ul>
+<li>Type : <strong>Livre</strong></li>
+<li>Titre: <strong><script type="text/javascript">document.write(getParameterByName('titre'));</script></strong></li>
+<li>Auteur: <strong><script type="text/javascript">document.write(getParameterByName('auteur'));</script></strong></li>
+<li>Année de publication: <strong><script type="text/javascript">document.write(getParameterByName('anneepub'));</script></strong></li>
+<li>Editeur: <strong><script type="text/javascript">document.write(getParameterByName('editeur'));</script></strong></li>
+<li>ISBN: <strong><script type="text/javascript">document.write(getParameterByName('isbn'));</script></strong></li>
+
+</ul>
+
+<br>
+<p>Vos coordonnées:</p>
+<ul>
+<li>Nom: <strong><script type="text/javascript">document.write(getParameterByName('nom'));</script></strong></li>
+<li>Prénom: <strong><script type="text/javascript">document.write(getParameterByName('prenom'));</script></strong></li>
+<li>Email: <strong><script type="text/javascript">document.write(getParameterByName('email'));</script></strong></li>
+</ul>
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-12">
+<a href="javascript: void(0); onclick=lien(); ">Effectuer une nouvelle suggestion d'achat.</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
