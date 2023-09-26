@@ -54,12 +54,4 @@ SMTP_LOGIN=
 SMTP_PASSWD=
 SMTP_HOST=
 
-#Pour recuperer l'INE (Universite Toulouse UNIQUEMENT)
-PARSE_USERS_FILE=false
-USERS_PATH_FILENAME=
-
-#Si une tache Shell génère les PDFs associés aux RTF déposés dans HOST_QUITUS_DIR
-GENERATE_PDF=false
-
-
 #########Deploiement############
